@@ -24,7 +24,7 @@ namespace Fuhua.Models
         public decimal? payMoney { get; set; }
 
         [Display(Name ="投资时间")]
-        public string payTime { get; set; }
+        public DateTime payTime { get; set; }
 
         [Display(Name ="投资人")]
         public string sm { get; set; }

@@ -3,18 +3,18 @@
 }
 
 <div class="jumbotron">
-    <h1 style="font-size:larger;font-family:'Microsoft YaHei UI'">富华财富报表查询系统</h1><label>@DateTime.Now.ToString("yyyy-MM-dd HH:mm")</label>
+    <h1 style="font-size:larger;font-family:'Microsoft YaHei UI'">富华财富报表查询系统</h1><p style="font-size:smaller">登录时间：@DateTime.Now.ToString("yyyy-MM-dd HH:mm")</p>
     <p class="lead">富华报表查询系统，仅供公司内部使用，严禁外网登录系统。</p>
-    <p><a href="javascript:void(0)" class="btn btn-primary btn-lg">Learn more &raquo;</a></p>
+    <p><a href="javascript:void(0)" class="btn btn-primary btn-lg">More &raquo;</a></p>
 </div>
 
 <div class="row">
     <div class="col-md-4">
-        <h2>工作台</h2>
+        <h2>投资明细表</h2>
         <p>
-            常用报表链接显示在此处。
+            各项目投资明细报表，按照投资时间倒叙排列，按照标的序号顺序排列，暂时尚未有条件，后续版本增加。
         </p>
-        <p><a class="btn btn-default" href="javascript:void(0)">日投资明细报表 &raquo;</a></p>
+        <p><div class="btn btn-default">@Html.ActionLink("日投资明细报表", "Index", "Amount")&raquo;</div></p>
     </div>
     @*<div class="col-md-4">
         <h2>Get more libraries</h2>
