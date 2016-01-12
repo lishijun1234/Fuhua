@@ -15,7 +15,7 @@ namespace Fuhua.Controllers
         // GET: Amount
         public ActionResult Index()
         {
-            //AmountModels am = new AmountModels();
+            ViewBag.Title = "投资明细表";
             List<AmountModels> am = SqlHelper.TableToEntity<AmountModels>(GetAmountList());
             
             return View(am);
