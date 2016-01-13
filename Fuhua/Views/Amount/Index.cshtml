@@ -1,0 +1,66 @@
+﻿@model IEnumerable<Fuhua.Models.AmountModels>
+
+
+<h2>ViewBag.Title</h2>
+
+<p>
+    @Html.ActionLink("刷新", "Index")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.pjName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Moneys)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Yearget)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TimeLimit)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.payMoney)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.payTime)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.sm)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.pjName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Moneys)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Yearget)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TimeLimit)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.payMoney)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.payTime)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.sm)
+        </td>
+        @*<td>
+            @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+            @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+            @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+        </td>*@
+    </tr>
+}
+
+</table>
