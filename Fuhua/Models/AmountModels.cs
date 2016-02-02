@@ -28,6 +28,12 @@ namespace Fuhua.Models
 
         [Display(Name ="投资人")]
         public string sm { get; set; }
+
+        [Display(Name = "投资人ID")]
+        public string userid { get; set; }
+
+        [Display(Name = "投资标的ID")]
+        public int pjID { get; set; }
     }
 
     public class AmountQuery
