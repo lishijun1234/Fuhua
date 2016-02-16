@@ -20,6 +20,9 @@ namespace Fuhua.Models
         [Display(Name ="投资期限（月）")]
         public int? TimeLimit { get; set; }
 
+        [Display(Name ="到期日期")]
+        public string TimeLimitDate { get; set; }
+
         [Display(Name ="投资金额")]
         public decimal? payMoney { get; set; }
 

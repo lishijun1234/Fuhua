@@ -29,6 +29,9 @@
             @Html.DisplayNameFor(model => model.payMoney)
         </th>
         <th>
+            @Html.DisplayNameFor(model => model.TimeLimitDate)
+        </th>
+        <th>
             @Html.DisplayNameFor(model => model.payTime)
         </th>
         <th>
@@ -54,6 +57,10 @@
         <td>
             @Html.DisplayFor(modelItem => item.payMoney)
         </td>
+        <th>
+            @Html.ActionLink(item.TimeLimitDate, "List", new { TimeLimitDate = item.TimeLimitDate })
+            @*@Html.DisplayFor(modelItem => item.TimeLimitDate)*@
+        </th>
         <td>
             @Html.DisplayFor(modelItem => item.payTime)
         </td>

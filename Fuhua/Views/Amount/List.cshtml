@@ -1,10 +1,8 @@
 ﻿@model IEnumerable<Fuhua.Models.AmountModels>
 
-@{
-    ViewBag.Title = "List";
-}
 
-<h2>List</h2>
+
+<h2>@ViewBag.Title</h2>
 
 <p>
    @Html.ActionLink("返回投资明细表", "Index")
@@ -25,6 +23,9 @@
         </th>
         <th>
             @Html.DisplayNameFor(model => model.payMoney)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TimeLimitDate)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.payTime)
@@ -55,6 +56,10 @@
         <td>
             @Html.DisplayFor(modelItem => item.payMoney)
         </td>
+        <th>
+            @Html.ActionLink(item.TimeLimitDate, "List", new { TimeLimitDate = item.TimeLimitDate })
+            @*@Html.DisplayFor(modelItem => item.TimeLimitDate)*@
+        </th>
         <td>
             @Html.DisplayFor(modelItem => item.payTime)
         </td>
