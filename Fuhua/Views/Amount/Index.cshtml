@@ -29,7 +29,8 @@
             @Html.DisplayNameFor(model => model.payMoney)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.TimeLimitDate)
+            @*@Html.DisplayNameFor(model => model.TimeLimitDate)*@
+            @Html.ActionLink("到期日期", "List", new { OrderByStr = "desc" })
         </th>
         <th>
             @Html.DisplayNameFor(model => model.payTime)

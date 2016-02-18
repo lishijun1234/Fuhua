@@ -25,7 +25,34 @@
             @Html.DisplayNameFor(model => model.payMoney)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.TimeLimitDate)
+            @*@Html.DisplayNameFor(model => model.TimeLimitDate)*@
+           
+            @{
+                string s_url = Request.RawUrl;
+                string s_text = "到期日期↓";
+                if (s_url.IndexOf("?") > 0)
+                {
+                    if(s_url.IndexOf("OrderByStr=desc") >0)
+                    {
+                        s_url = s_url.Replace("OrderByStr=desc", "OrderByStr=asc");
+                        s_text = "到期日期↑";
+                    }
+                    else if (s_url.IndexOf("OrderByStr=asc") > 0)
+                    {
+                        s_url = s_url.Replace("OrderByStr=asc", "OrderByStr=desc");
+                    }
+                    else
+                    {
+                        s_url += "&OrderByStr=desc";
+                    }
+                    <a href="@s_url">@s_text</a>
+                }
+                else
+                {
+                    @Html.ActionLink(s_text, "List", new { OrderByStr = "desc" })
+                }
+            }
+            
         </th>
         <th>
             @Html.DisplayNameFor(model => model.payTime)

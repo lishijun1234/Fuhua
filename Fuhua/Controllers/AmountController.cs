@@ -25,11 +25,11 @@ namespace Fuhua.Controllers
         }
 
         //获取列表
-        public ActionResult List(int? pjID = null,int? Yearget = null,int? TimeLimit=null,string TimeLimitDate=null)
+        public ActionResult List(int? pjID = null,int? Yearget = null,int? TimeLimit=null,string TimeLimitDate=null,string OrderByStr=null)
         {
             List<AmountModels> am = new List<AmountModels>();
             string s_title = "条件查询:"; 
-            am = SqlHelper.TableToEntity<AmountModels>(GetAmountList(Yearget, TimeLimit,pjID,TimeLimitDate));
+            am = SqlHelper.TableToEntity<AmountModels>(GetAmountList(Yearget, TimeLimit,pjID,TimeLimitDate,OrderByStr));
             if (!string.IsNullOrEmpty(Convert.ToString(pjID)))
             {
                 s_title += "产品ID为：" + pjID.ToString();
@@ -44,7 +44,7 @@ namespace Fuhua.Controllers
             }
             if (!string.IsNullOrEmpty(TimeLimitDate))
             {
-                s_title += "到期日为：" + TimeLimitDate + "月";
+                s_title += "到期日为：" + TimeLimitDate;
             }
             ViewBag.Title = s_title;
             return View(am);
@@ -64,7 +64,7 @@ namespace Fuhua.Controllers
             return dt;
         }
         
-        private DataTable GetAmountList(int? Yearget = null,int? TimeLimit=null,int? pjID = null,string TimeLimitDate=null)
+        private DataTable GetAmountList(int? Yearget = null,int? TimeLimit=null,int? pjID = null,string TimeLimitDate=null,string OrderByStr = null)
         {
             StringBuilder s_sql = new StringBuilder(@"select pj.pjName,pj.Moneys,pj.Yearget,pj.[TimeLimit],
                             pro.payMoney,pro.payTime,u.sm,u.userid,pjID,
@@ -73,7 +73,6 @@ namespace Fuhua.Controllers
                             Inner Join paypro pro on pj.pjcode = pro.pjcode
                             Inner Join users u on pro.userid = u.userid
                                Where 1 = 1 ");
-            //order by pro.payTime desc,pj.pjcode ";
 
             SqlParameter[] p = new SqlParameter[]
             {
@@ -108,6 +107,13 @@ namespace Fuhua.Controllers
                 s_sql.Append(" and Convert(char(10), dateadd(mm,pj.[TimeLimit],pro.payTime) - 1,120) = @TimeLimitDate");
                 p[3].Value = TimeLimitDate;
             }
+
+            //order by pro.payTime desc,pj.pjcode ";
+            if (!string.IsNullOrEmpty(OrderByStr))
+            {
+                s_sql.Append(" Order by Convert(char(10), dateadd(mm,pj.[TimeLimit],pro.payTime) - 1,120) "+ OrderByStr + ",pj.pjcode");
+            }
+
 
             DataTable dt = SqlHelper.ExecuteDataTable(CommandType.Text, s_sql.ToString(), p);
 
